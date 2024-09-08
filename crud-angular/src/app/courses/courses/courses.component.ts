@@ -1,6 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Course } from '../model/course';
 import { CoursesService } from '../services/courses.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-courses',
@@ -10,10 +11,11 @@ import { CoursesService } from '../services/courses.service';
 export class CoursesComponent {
   private coursesService = inject(CoursesService);
 
-  public courses: Course[] = [];
+  public courses: Observable<Course[]>;
   public displayedColumns = ['name', 'category'];
 
-  ngOnInit(): void {
+  constructor() {
     this.courses = this.coursesService.list();
   }
+
 }
