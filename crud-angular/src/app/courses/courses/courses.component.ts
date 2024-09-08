@@ -1,20 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Course } from '../model/course';
+import { CoursesService } from '../services/courses.service';
 
 @Component({
   selector: 'app-courses',
   templateUrl: './courses.component.html',
-  styleUrls: ['./courses.component.scss']
+  styleUrls: ['./courses.component.scss'],
 })
 export class CoursesComponent {
+  private coursesService = inject(CoursesService);
 
-  public courses: Course[] = [
-    {
-      _id: '1',
-      name: 'Angular',
-      category: 'Frontend'
-    }
-  ];
-  public displayedColumns = [ 'name', 'category'];
+  public courses: Course[] = [];
+  public displayedColumns = ['name', 'category'];
 
+  ngOnInit(): void {
+    this.courses = this.coursesService.list();
+  }
 }
