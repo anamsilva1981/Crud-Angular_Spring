@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { Course } from '../model/course';
-import { first, tap } from 'rxjs';
+import { delay, first, tap } from 'rxjs';
 
 
 @Injectable({
@@ -13,6 +13,6 @@ export class CoursesService {
   private httCliente = inject(HttpClient);
 
   public list(){
-    return this.httCliente.get<Course[]>(this.API).pipe(first(), tap(console.log));
+    return this.httCliente.get<Course[]>(this.API).pipe(first(), delay(2000), tap(console.log));
   }
 }

@@ -3,3 +3,10 @@
     margin: 0 auto; /* Centraliza o card na tela */
     margin-top: 10px;
   }
+
+.loading-spinner{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 25px;
+}
