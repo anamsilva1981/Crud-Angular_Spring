@@ -13,6 +13,6 @@ export class CoursesService {
   private httCliente = inject(HttpClient);
 
   public list(){
-    return this.httCliente.get<Course[]>(this.API).pipe(first(), delay(2000), tap(console.log));
+    return this.httCliente.get<Course[]>(this.API).pipe(first(), delay(200), tap(console.log));
   }
 }
